@@ -1,0 +1,1 @@
+enum class SortProperty{ Title, Duration, Classification };
