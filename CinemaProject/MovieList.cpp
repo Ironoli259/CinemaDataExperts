@@ -33,8 +33,8 @@ MovieList::~MovieList() {
 }
 
 //Add Movie method. Insert at end.
-void MovieList::addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& trailer) {
-	Movie* newMovie = new Movie{ title, duration, classification, synopsis, trailer };
+void MovieList::addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor) {
+	Movie* newMovie = new Movie{ title, duration, classification, synopsis, genre, director, actor, 0 };
 	newMovie->next = head;
 	head = newMovie;
 	titleTree.insert(newMovie);
@@ -45,7 +45,7 @@ void MovieList::addMovie(const std::string& title, int duration, const std::stri
 
 //Remove Movie method.
 void MovieList::removeMovie(const std::string& title) {
-	Movie temp(title, 0, "", "", "");
+	Movie temp(title, 0, "", "", "", "", "", 0);
 	Movie* movieToRemove = titleTree.search(&temp);
 	if (movieToRemove == nullptr) {
 		cout << "Movie not found.\n";
@@ -77,7 +77,9 @@ bool printMovieInfo(const Movie& movie) {
 	cout << "Duration: " << movie.duration << " minutes" << endl;
 	cout << "Classification: " << movie.classification << endl;
 	cout << "Synopsis: " << movie.synopsis << endl;
-	cout << "Trailer: " << movie.trailer << endl;
+	cout << "Genre: " << movie.genre << endl;
+	cout << "Director: " << movie.director << endl;
+	cout << "Actor: " << movie.actor << endl;
 	cout << "--------------------------------------" << endl;
 
 	// Return true to continue traversing the tree
@@ -166,5 +168,3 @@ void MovieList::displayMoviesSortedBy(SortProperty option) {
 		cout << "Invalid sort option.\n";
 	}
 }
-
-

@@ -12,10 +12,14 @@ struct Movie {
 	int duration; //minutes
 	std::string classification;
 	std::string synopsis;
-	std::string trailer; //Not sure whether to keep it a string
+	std::string genre;
+	std::string director;
+	std::string actor;
+	float rating; //out of 5
 	Movie* next;
 
-	Movie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& trailer): title(title), duration(duration), classification(classification), synopsis(synopsis), trailer(trailer), next(nullptr) {}
+	Movie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating):
+		title(title), duration(duration), classification(classification), synopsis(synopsis), genre(genre), director(director), actor(actor), rating(0), next(nullptr) {}
 };
 
 class MovieList
@@ -30,7 +34,7 @@ private:
 public:
 	MovieList();
 	~MovieList();
-	void addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& trailer);
+	void addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor);
 	void removeMovie(const std::string& title);
 	void displayMovies();
 	void displayMoviesSortedBy(SortProperty sortProp);
