@@ -1,17 +1,9 @@
 #include <iostream>
-#include "MovieList.h"
-
-//Main
+#include "CinemaReservation.h"
 int main()
 {
-    MovieList movieList;
-
-    movieList.addMovie("Interstellar", 189, "PG-13", "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.", "Sci-Fi", "Christopher Nolan", "Matthew McConaughey");
-    movieList.addMovie("Avatar", 182, "PG-13", "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.", "Fantasy", "James Cameron", "Sam Worthington");
-    movieList.addMovie("Ted", 106, "R", "John Bennett, a man whose childhood wish of bringing his teddy bear to life came true, now must decide between keeping the relationship with the bear, Ted or his girlfriend, Lori.", "Comedy", "Seth MacFarlane", "Mark Wahlberg");
-
-    movieList.displayMovies();
-    movieList.displayMoviesSortedBy(SortProperty::Title);
-    movieList.displayMoviesSortedBy(SortProperty::Duration);
-    movieList.displayMoviesSortedBy(SortProperty::Classification);
+    CinemaReservation* cinemaReservation = new CinemaReservation();
+    cinemaReservation->Initialize();
+    delete cinemaReservation;
+    return 0;    
 }
