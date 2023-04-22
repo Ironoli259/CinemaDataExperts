@@ -7,10 +7,10 @@ struct Showtime {
 	Movie* movie;
 	std::string startTime;
 	std::string endTime;
-	std::string cinemaHall;
+	int cinemaHall;
 
-	Showtime() : movie(nullptr), startTime(""), endTime(""), cinemaHall("") {}
-	Showtime(Movie* movie, const std::string& startTime, const std::string& endTime, const std::string& cinemaHall) :
+	Showtime() : movie(nullptr), startTime(""), endTime(""), cinemaHall(0) {}
+	Showtime(Movie* movie, const std::string& startTime, const std::string& endTime,const int cinemaHall) :
 		movie(movie), startTime(startTime), endTime(endTime), cinemaHall(cinemaHall) {}
 };
 
@@ -24,7 +24,7 @@ private:
 public:
 	ShowtimeList();
 	~ShowtimeList();
-	void addShowtime(Movie* movie, const std::string& startTime, const std::string& endTime, const std::string& cinemaHall);
+	void addShowtime(Movie* movie, const std::string& startTime, const std::string& endTime, const int cinemaHall);
 	void removeShowtime(int index);
 	int getSize() const;
 	Showtime* getShowtimeAt(int index);

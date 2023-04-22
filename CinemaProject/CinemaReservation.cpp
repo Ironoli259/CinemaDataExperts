@@ -5,6 +5,7 @@
 #include "MovieList.h"
 #include <chrono>
 #include <thread>
+#include <cstdlib>
 
 using namespace std::chrono_literals;
 using std::cin;
@@ -41,7 +42,7 @@ void CinemaReservation::Initialize()
     movieList.addMovie("Interstellar", 169, "PG-13", "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.", "Sci-Fi", "Christopher Nolan", "Matthew McConaughey", 8.6);
     movieList.addMovie("Leon: The Professional", 110, "R", "Mathilda, a 12-year-old girl, is reluctantly taken in by Léon, a professional assassin, after her family is murdered. An unusual relationship forms as she becomes his protégée and learns the assassin's trade.", "Crime", "Luc Besson", "Jean Reno", 8.5);
 
-    movieList.displayMovies();
+    //movieList.displayMovies();
     MainMenu();
     return;
 }
@@ -49,21 +50,48 @@ void CinemaReservation::Initialize()
 void CinemaReservation::MainMenu()
 {
         string userInput;
-        std::regex rangeRegex("^[1-3]$"); // regex to match range from 1 to 10
-
+        std::regex rangeRegex("^[0-3]$"); // regex to match range from 0 to 3
+        bool validated;
         // ask user for input and validate with regex
         do {
             cout << "CINEMA RESERVATION" << endl;
             cout << "1- Search movies" << endl;
             cout << "2- Search cinema halls" << endl;
             cout << "3- Check my reservations" << endl;
+            cout << "0- Exit the application" << endl;
             cin >> userInput;
-            if (!std::regex_match(userInput, rangeRegex))
+            validated = std::regex_match(userInput, rangeRegex);
+            if (!validated)
             {
                 cout << "Invalid input";
                 std::this_thread::sleep_for(2s);
             }
-                system("clear");
-        } while (!std::regex_match(userInput, rangeRegex));
+                system("cls");
+        } while (!validated);
+
+        if (userInput == "1")
+            SearchMovieMenu();
+        else if (userInput == "2")
+            //SearchHallsMenu()
+            ;
+        else if (userInput == "3")
+            //DisplayReservations()
+            ;
+        else
+            ExitApp();
         return;
+}
+
+void CinemaReservation::SearchMovieMenu()
+{
+
+}
+
+void CinemaReservation::ExitApp()
+{
+    system("cls");
+    cout << "THANK YOU FOR USING OUR CINEMA TICKET APP!!" << endl;
+    cout << "Developed by:\nOlivier Grenier\nAlexis Proulx\nDominic Audet" << endl;
+    system("pause>0");
+    exit(EXIT_SUCCESS);
 }

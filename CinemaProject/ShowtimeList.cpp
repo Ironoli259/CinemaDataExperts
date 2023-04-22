@@ -9,7 +9,7 @@ ShowtimeList::ShowtimeList() : size(0) {}
 ShowtimeList::~ShowtimeList() {}
 
 // Add a new showtime to the list
-void ShowtimeList::addShowtime(Movie* movie, const string& startTime, const string& endTime, const string& cinemaHall) {
+void ShowtimeList::addShowtime(Movie* movie, const string& startTime, const string& endTime,const int cinemaHall) {
     if (size >= MAX_SIZE) {
         throw std::out_of_range("ShowtimeList is full");
     }
