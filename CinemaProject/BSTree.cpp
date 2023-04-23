@@ -1,7 +1,9 @@
 #include "BSTree.h"
+#include <iostream>
+using std::cout;
 
 template<typename T>
-void BSTree<T>::insertNode(Node*& current, const T& value) {
+void BSTree<T>::InsertNode(Node*& current, const T& value) {
     if (current == nullptr) {
         current = new Node(value);
     }
@@ -14,7 +16,7 @@ void BSTree<T>::insertNode(Node*& current, const T& value) {
 }
 
 template<typename T>
-typename BSTree<T>::Node* BSTree<T>::findNode(Node* current, const T& value) const {
+typename BSTree<T>::Node* BSTree<T>::FindNode(Node* current, const T& value) const {
     if (current == nullptr) {
         return nullptr;
     }
@@ -30,7 +32,7 @@ typename BSTree<T>::Node* BSTree<T>::findNode(Node* current, const T& value) con
 }
 
 template<typename T>
-void BSTree<T>::deleteTree(Node*& current) {
+void BSTree<T>::DeleteTree(Node*& current) {
     if (current != nullptr) {
         deleteTree(current->left);
         deleteTree(current->right);
@@ -48,21 +50,34 @@ BSTree<T>::~BSTree() {
 }
 
 template<typename T>
-void BSTree<T>::insert(const T& value) {
+void BSTree<T>::Insert(const T& value) {
     insertNode(root, value);
 }
 
 template<typename T>
-typename BSTree<T>::Node* BSTree<T>::find(const T& value) const {
+typename BSTree<T>::Node* BSTree<T>::Find(const T& value) const {
     return findNode(root, value);
 }
 
 template<typename T>
-bool BSTree<T>::contains(const T& value) const {
+bool BSTree<T>::Contains(const T& value) const {
     return (findNode(root, value) != nullptr);
 }
 
 template<typename T>
-typename BSTree<T>::Node* BSTree<T>::getRoot() const {
+typename BSTree<T>::Node* BSTree<T>::GetRoot() const {
     return root;
+}
+template<typename T>
+void BSTree<T>::InorderTraversal(Node* current) const {
+    if (current != nullptr) {
+        InorderTraversal(current->left);
+        std::cout << current->value << " ";
+        InorderTraversal(current->right);
+    }
+}
+
+template<typename T>
+void BSTree<T>::PrintInorder() const {
+    InorderTraversal(root);
 }

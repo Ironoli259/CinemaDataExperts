@@ -3,17 +3,18 @@
 using std::string;
 
 // ShowtimeList constructor
-ShowtimeList::ShowtimeList() : size(0) {}
+ShowtimeList::ShowtimeList() : showtimes(MAX_SIZE), size(0) {}
 
 // ShowtimeList destructor
 ShowtimeList::~ShowtimeList() {}
 
 // Add a new showtime to the list
-void ShowtimeList::addShowtime(Movie* movie, const string& startTime, const string& endTime,const int cinemaHall) {
+void ShowtimeList::AddShowtime(Movie* movie, const string& startTime, const string& endTime, const int cinemaHall) {
     if (size >= MAX_SIZE) {
         throw std::out_of_range("ShowtimeList is full");
     }
-    showtimes[size] = Showtime(movie, startTime, endTime, cinemaHall);
+    Showtime newShowtime{ movie,startTime,endTime, cinemaHall };
+    showtimes.Add(newShowtime);
     size++;
 }
 
@@ -22,9 +23,7 @@ void ShowtimeList::removeShowtime(int index) {
     if (index < 0 || index >= size) {
         throw std::out_of_range("Index out of range");
     }
-    for (int i = index; i < size - 1; i++) {
-        showtimes[i] = showtimes[i + 1];
-    }
+    showtimes.RemoveAt(index);
     size--;
 }
 
@@ -33,10 +32,12 @@ int ShowtimeList::getSize() const {
     return size;
 }
 
-// Get a pointer to the showtime at the given index
-Showtime* ShowtimeList::getShowtimeAt(int index) {
+// Get a reference to the showtime at the given index
+Showtime& ShowtimeList::getShowtimeAt(int index) {
     if (index < 0 || index >= size) {
         throw std::out_of_range("Index out of range");
     }
-    return &showtimes[index];
+    return showtimes.GetAt(index);
 }
+
+
