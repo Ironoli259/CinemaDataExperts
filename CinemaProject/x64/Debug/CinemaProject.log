@@ -1,4 +1,6 @@
-﻿  ArrayCustom.cpp
+﻿  Administrator.cpp
+  ArrayCustom.cpp
+  CinemaProject.cpp
   CinemaReservation.cpp
 F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(26,229): warning C4305: 'argument': truncation from 'double' to 'float'
 F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(32,223): warning C4305: 'argument': truncation from 'double' to 'float'
@@ -22,9 +24,12 @@ F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\Ci
 F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(63,196): warning C4305: 'argument': truncation from 'double' to 'float'
 F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(64,246): warning C4305: 'argument': truncation from 'double' to 'float'
 F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(65,214): warning C4305: 'argument': truncation from 'double' to 'float'
+  HallsList.cpp
+  HallsTree.cpp
+  MovieGraph.cpp
+  MovieList.cpp
+  ShowtimeList.cpp
+  SortProperty.cpp
+  User.cpp
   Generating Code...
-HallsTree.obj : error LNK2019: unresolved external symbol "public: __cdecl BSTree<struct CinemaHall>::BSTree<struct CinemaHall>(void)" (??0?$BSTree@UCinemaHall@@@@QEAA@XZ) referenced in function "public: __cdecl HallsTree::HallsTree(void)" (??0HallsTree@@QEAA@XZ)
-HallsTree.obj : error LNK2019: unresolved external symbol "public: __cdecl BSTree<struct CinemaHall>::~BSTree<struct CinemaHall>(void)" (??1?$BSTree@UCinemaHall@@@@QEAA@XZ) referenced in function "public: __cdecl HallsTree::~HallsTree(void)" (??1HallsTree@@QEAA@XZ)
-HallsTree.obj : error LNK2019: unresolved external symbol "public: void __cdecl BSTree<struct CinemaHall>::Insert(struct CinemaHall const &)" (?Insert@?$BSTree@UCinemaHall@@@@QEAAXAEBUCinemaHall@@@Z) referenced in function "public: void __cdecl HallsTree::AddHall(int,struct Showtime *,struct Showtime *,struct Showtime *,struct Showtime *,struct Showtime *,struct Showtime *)" (?AddHall@HallsTree@@QEAAXHPEAUShowtime@@00000@Z)
-HallsTree.obj : error LNK2019: unresolved external symbol "public: void __cdecl BSTree<struct CinemaHall>::PrintInorder(void)const " (?PrintInorder@?$BSTree@UCinemaHall@@@@QEBAXXZ) referenced in function "public: void __cdecl HallsTree::DisplayHalls(void)" (?DisplayHalls@HallsTree@@QEAAXXZ)
-F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\x64\Debug\CinemaProject.exe : fatal error LNK1120: 4 unresolved externals
+  CinemaProject.vcxproj -> F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\x64\Debug\CinemaProject.exe

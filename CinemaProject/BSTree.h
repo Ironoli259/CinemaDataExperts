@@ -20,7 +20,7 @@ private:
         else if (value < current->value) {
             InsertNode(current->left, value);
         }
-        else if (value > current->value) {
+        else if (!(value < current->value)) {
             InsertNode(current->right, value);
         }
     }
@@ -32,7 +32,7 @@ private:
         else if (value < current->value) {
             return FindNode(current->left, value);
         }
-        else if (value > current->value) {
+        else if ((!value < current->value)) {
             return FindNode(current->right, value);
         }
         else {
@@ -42,8 +42,8 @@ private:
 
     void DeleteTree(Node*& current) {
         if (current != nullptr) {
-            deleteTree(current->left);
-            deleteTree(current->right);
+            DeleteTree(current->left);
+            DeleteTree(current->right);
             delete current;
             current = nullptr;
         }
