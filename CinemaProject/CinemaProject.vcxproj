@@ -128,17 +128,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Administrator.cpp" />
+    <ClCompile Include="ArrayCustom.cpp" />
+    <ClCompile Include="BSTree.cpp" />
     <ClCompile Include="CinemaProject.cpp" />
+    <ClCompile Include="CinemaReservation.cpp" />
+    <ClCompile Include="HallsList.cpp" />
+    <ClCompile Include="HallsTree.cpp" />
     <ClCompile Include="MovieGraph.cpp" />
     <ClCompile Include="MovieList.cpp" />
+    <ClCompile Include="ShowtimeList.cpp" />
     <ClCompile Include="SortProperty.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Administrator.h" />
+    <ClInclude Include="ArrayCustom.h" />
     <ClInclude Include="AVLTree.h" />
+    <ClInclude Include="BSTree.h" />
+    <ClInclude Include="CinemaReservation.h" />
+    <ClInclude Include="HallsList.h" />
+    <ClInclude Include="HallsTree.h" />
     <ClInclude Include="MovieGraph.h" />
     <ClInclude Include="MovieList.h" />
+    <ClInclude Include="ShowtimeList.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
