@@ -1,5 +1,7 @@
 #pragma once
 #include "MovieList.h"
+#include "ArrayCustom.h"
+#include "ArrayCustom.cpp"
 
 // Showtime Structure
 struct Showtime {
@@ -18,14 +20,14 @@ struct Showtime {
 class ShowtimeList {
 private:
 	static const int MAX_SIZE = 100;
-	Showtime showtimes[MAX_SIZE];
+	ArrayCustom<Showtime> showtimes;
 	int size;
 
 public:
 	ShowtimeList();
 	~ShowtimeList();
-	void addShowtime(Movie* movie, const std::string& startTime, const std::string& endTime, const int cinemaHall);
+	void AddShowtime(Movie* movie, const std::string& startTime, const std::string& endTime, const int cinemaHall);
 	void removeShowtime(int index);
 	int getSize() const;
-	Showtime* getShowtimeAt(int index);
+	Showtime& getShowtimeAt(int index);
 };

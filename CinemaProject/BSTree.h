@@ -13,18 +13,20 @@ private:
 
     Node* root;
 
-    void insertNode(Node*& current, const T& value);
-    Node* findNode(Node* current, const T& value) const;
-    void deleteTree(Node*& current);
+    void InsertNode(Node*& current, const T& value);
+    Node* FindNode(Node* current, const T& value) const;
+    void DeleteTree(Node*& current);
 
 public:
     BSTree();
     ~BSTree();
 
-    void insert(const T& value);
-    Node* find(const T& value) const;
-    bool contains(const T& value) const;
-    Node* getRoot() const;
+    void Insert(const T& value);
+    Node* Find(const T& value) const;
+    bool Contains(const T& value) const;
+    Node* GetRoot() const;
+    void InorderTraversal(Node* current) const;
+    void PrintInorder() const;
 };
 
 
