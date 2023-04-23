@@ -46,5 +46,6 @@ public:
 	Movie* getMovieByTitle(const std::string& title) const;
 	void addMovieRelationship(const std::string& title1, const std::string& title2);
 	vector<Movie*> recommendMovies(const std::string& title, const std::string& genre, const std::string& classification, const std::string& director, const std::string& actor, int maxDepth) const;
+	vector<Movie*> recommendMoviesByAge(const std::string& title, const std::string& preferredClassification, int maxDepth) const;
 	void displayRecommended(vector<Movie*> movies);
 };

@@ -124,6 +124,15 @@ void MovieList::clearList() {
 	head = NULL;
 }
 
+int getClassificationPriority(const std::string& classification) {
+	if (classification == "G") return 0;
+	if (classification == "PG") return 1;
+	if (classification == "PG-13") return 2;
+	if (classification == "R") return 3;
+	if (classification == "M") return 4;
+	return -1;
+}
+
 //Returns the pointer of the movie in a specified position
 Movie* MovieList::getMovieAtPosition(int position) {
 	if (position < 0) { throw invalid_argument("Position must be non-negative."); }
@@ -160,6 +169,7 @@ void MovieList::addMovieRelationship(const std::string& title1, const std::strin
 		movieGraph.addEdge(movie1, movie2);
 }
 
+//Recommendation System
 vector<Movie*> MovieList::recommendMovies(const std::string& title, const string& genre, const string& classification, const string& director, const string& actor, int maxDepth) const
 {
 	Movie* sourceMovie = getMovieByTitle(title);
@@ -170,6 +180,31 @@ vector<Movie*> MovieList::recommendMovies(const std::string& title, const string
 	else {
 		return std::vector<Movie*>{}; // Return an empty vector if the movie is not found
 	}
+}
+
+vector<Movie*> MovieList::recommendMoviesByAge(const std::string& title, const std::string& preferredClassification, int maxDepth) const {
+	Movie* sourceMovie = getMovieByTitle(title);
+
+	if (!sourceMovie) {
+		return std::vector<Movie*>{}; // Return an empty vector if the movie is not found
+	}
+
+	// Get the recommended movies without any filter
+	auto movies = movieGraph.recommendMovies(sourceMovie, "", "", "", "", maxDepth);
+
+	// Filter out movies that are above the user's preferred classification
+	int userClassificationPriority = getClassificationPriority(preferredClassification);
+	auto it = std::remove_if(movies.begin(), movies.end(), [&](const Movie* movie) {
+		return getClassificationPriority(movie->classification) > userClassificationPriority;
+		});
+	movies.erase(it, movies.end());
+
+	// Sort the recommended movies by classification priority
+	std::sort(movies.begin(), movies.end(), [&](const Movie* a, const Movie* b) {
+		return getClassificationPriority(a->classification) < getClassificationPriority(b->classification);
+		});
+
+	return movies;
 }
 
 void MovieList::displayMoviesSortedBy(SortProperty option) {
