@@ -12,6 +12,17 @@ void MovieGraph::addEdge(const Movie* movie1, const Movie* movie2) {
 	adjacencyList[movie2].emplace_back(movie1);
 }
 
+void MovieGraph::removeMovie(const Movie* movie) {
+	//Remove movie from adjacency list
+	adjacencyList.erase(movie);
+
+	//Remove the movie from the edges of all other movies
+	for (auto& kv : adjacencyList) {
+		auto& movieEdges = kv.second;
+		movieEdges.erase(std::remove(movieEdges.begin(), movieEdges.end(), movie), movieEdges.end());
+	}
+}
+
 float MovieGraph::calculateSimilarity(const Movie* movie, const std::string& genre, const std::string& classification, const std::string& director, const std::string& actor) const {
 	float score = 0;
 

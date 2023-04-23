@@ -30,6 +30,7 @@ int main()
 	cinemaReservation->Initialize();
 	do {
 		input = mainMenu();
+		auto it = cinemaReservation->GetUserList().end();
 		
 		switch (input)
 		{
@@ -42,20 +43,43 @@ int main()
 			system("cls");
 
 			//Verify if user exists
-			auto it = std::find_if(cinemaReservation->userList.begin(), cinemaReservation->userList.end(), [&](const User& user) {
-				return user.getUserName() == userName;
+			it = std::find_if(cinemaReservation->GetUserList().begin(), cinemaReservation->GetUserList().end(), [&](const User* user) {
+				return user->getUserName() == userName;
 				});
-			if (it != cinemaReservation->userList.end()) {
-				
+			if (it != cinemaReservation->GetUserList().end()) {
+				cinemaReservation->SetCurrentUser(*it);
+				cinemaReservation->MainMenu();
 			}
 			else {
-				cout << "The user already exists\n";
+				cout << "The user does not exist. Please create a new user.\n";
 				system("pause");
 				system("cls");
 			}
 			break;
 		}
 		case 2:
+			cout << "           CREATE A USER          \n";
+			cout << "----------------------------------\n";
+			cout << "Enter a username: ";
+
+			while (!(cin >> userName) || userName.empty()) {
+				cout << "INVALID INPUT\n";
+				cout << "Enter a username: ";
+				cin.clear();
+				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
+			//Verify if user exists
+			it = std::find_if(cinemaReservation->GetUserList().begin(), cinemaReservation->GetUserList().end(), [&](const User* user) {
+				return user->getUserName() == userName;
+				});
+			if (it != cinemaReservation->GetUserList().end()) {
+				cout << "The username already exists.\n";
+				system("pause");
+				system("cls");
+			}
+			else {
+				cinemaReservation->AddUser(userName);				
+			}
 			break;
 		case 3:
 			break;

@@ -52,9 +52,11 @@ void MovieList::removeMovie(const std::string& title) {
 		cout << "Movie not found.\n";
 		return;
 	}
+
 	titleTree.remove(movieToRemove);
 	durationTree.remove(movieToRemove);
 	classificationTree.remove(movieToRemove);
+	movieGraph.removeMovie(movieToRemove);
 
 	//Remove from linked list
 	Movie* prev = nullptr;
@@ -183,6 +185,7 @@ vector<Movie*> MovieList::recommendMovies(const std::string& title, const string
 	}
 }
 
+//Recommend by age system
 vector<Movie*> MovieList::recommendMoviesByAge(const std::string& title, const std::string& preferredClassification, int maxDepth) const {
 	Movie* sourceMovie = getMovieByTitle(title);
 

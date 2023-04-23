@@ -83,5 +83,8 @@
     <ClInclude Include="ShowtimeList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MiscMethods.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

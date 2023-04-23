@@ -10,10 +10,11 @@ struct Showtime {
 	std::string startTime;
 	std::string endTime;
 	int cinemaHall;
+	int seatingCapacity;
 
-	Showtime() : movie(nullptr), startTime(""), endTime(""), cinemaHall(0) {}
+	Showtime() : movie(nullptr), startTime(""), endTime(""), cinemaHall(0), seatingCapacity(50) {}
 	Showtime(Movie* movie, const std::string& startTime, const std::string& endTime,const int cinemaHall) :
-		movie(movie), startTime(startTime), endTime(endTime), cinemaHall(cinemaHall) {}
+		movie(movie), startTime(startTime), endTime(endTime), cinemaHall(cinemaHall), seatingCapacity(50) {}
 };
 
 

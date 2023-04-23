@@ -147,6 +147,7 @@
     <ClInclude Include="CinemaReservation.h" />
     <ClInclude Include="HallsList.h" />
     <ClInclude Include="HallsTree.h" />
+    <ClInclude Include="MiscMethods.h" />
     <ClInclude Include="MovieGraph.h" />
     <ClInclude Include="MovieList.h" />
     <ClInclude Include="ShowtimeList.h" />
