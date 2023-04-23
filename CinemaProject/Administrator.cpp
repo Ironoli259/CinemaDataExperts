@@ -1,10 +1,8 @@
 #include "Administrator.h"
 
-Administrator::Administrator(std::string userName, std::string password, bool main)
+Administrator::Administrator(std::string userName)
 {
-	this->userName = userName;
-	this->password = password;
-	this->isMainAdmin = main;
+	this->userName = userName;		
 }
 
 Administrator::~Administrator()

@@ -6,6 +6,8 @@
 #include "SortProperty.cpp"
 #include "MovieGraph.h"
 
+using std::vector;
+
 //Movie Structure
 
 struct Movie {
@@ -16,7 +18,7 @@ struct Movie {
 	std::string genre;
 	std::string director;
 	std::string actor;
-	float rating; //out of 5
+	float rating; //out of 10
 	Movie* next;
 
 	Movie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating):
@@ -36,7 +38,7 @@ private:
 public:
 	MovieList();
 	~MovieList();
-	void addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor);
+	void addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating);
 	void removeMovie(const std::string& title);
 	void displayMovies();
 	void displayMoviesSortedBy(SortProperty sortProp);

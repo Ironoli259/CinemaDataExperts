@@ -33,8 +33,8 @@ MovieList::~MovieList() {
 }
 
 //Add Movie method. Insert at end.
-void MovieList::addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor) {
-	Movie* newMovie = new Movie{ title, duration, classification, synopsis, genre, director, actor, 0 };
+void MovieList::addMovie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating) {
+	Movie* newMovie = new Movie{ title, duration, classification, synopsis, genre, director, actor, rating };
 	newMovie->next = head;
 	head = newMovie;
 	titleTree.insert(newMovie);
@@ -81,6 +81,7 @@ bool printMovieInfo(const Movie& movie) {
 	cout << "Genre: " << movie.genre << endl;
 	cout << "Director: " << movie.director << endl;
 	cout << "Actor: " << movie.actor << endl;
+	cout << "Rating: " << movie.rating << "/10\n";
 	cout << "--------------------------------------" << endl;
 
 	// Return true to continue traversing the tree
