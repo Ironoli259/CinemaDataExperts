@@ -40,6 +40,7 @@ void MovieList::addMovie(const std::string& title, int duration, const std::stri
 	titleTree.insert(newMovie);
 	durationTree.insert(newMovie);
 	classificationTree.insert(newMovie);
+	movieGraph.addMovie(newMovie);
 	size++;
 }
 
@@ -137,6 +138,40 @@ Movie* MovieList::getMovieAtPosition(int position) {
 	return temp;
 }
 
+Movie* MovieList::getMovieByTitle(const std::string& title) const
+{
+	Movie* currentMovie = head;
+
+	while (currentMovie != nullptr) {
+		if (currentMovie->title == title) {
+			return currentMovie;
+		}
+		currentMovie = currentMovie->next;
+	}
+	return nullptr;	//movie not found
+}
+
+void MovieList::addMovieRelationship(const std::string& title1, const std::string& title2)
+{
+	Movie* movie1 = getMovieByTitle(title1);
+	Movie* movie2 = getMovieByTitle(title2);
+
+	if (movie1 && movie2)
+		movieGraph.addEdge(movie1, movie2);
+}
+
+vector<Movie*> MovieList::recommendMovies(const std::string& title, const string& genre, const string& classification, const string& director, const string& actor, int maxDepth) const
+{
+	Movie* sourceMovie = getMovieByTitle(title);
+
+	if (sourceMovie) {
+		return movieGraph.recommendMovies(sourceMovie, genre, classification, director, actor, maxDepth);
+	}
+	else {
+		return std::vector<Movie*>{}; // Return an empty vector if the movie is not found
+	}
+}
+
 void MovieList::displayMoviesSortedBy(SortProperty option) {
 	if (titleTree.isEmpty()) {
 		cout << "There are no movies to display.\n";
@@ -166,5 +201,14 @@ void MovieList::displayMoviesSortedBy(SortProperty option) {
 		break;
 	default:
 		cout << "Invalid sort option.\n";
+	}
+}
+
+void MovieList::displayRecommended(vector<Movie*> movies)
+{
+	cout << "RECOMMENDED MOVIES\n";
+	cout << "---------------------------------------\n";
+	for (const auto& movie : movies) {
+		cout << "-> " + movie->title << endl;
 	}
 }

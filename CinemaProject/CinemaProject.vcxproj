@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="Administrator.cpp" />
     <ClCompile Include="CinemaProject.cpp" />
+    <ClCompile Include="MovieGraph.cpp" />
     <ClCompile Include="MovieList.cpp" />
     <ClCompile Include="SortProperty.cpp" />
     <ClCompile Include="User.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="Administrator.h" />
     <ClInclude Include="AVLTree.h" />
+    <ClInclude Include="MovieGraph.h" />
     <ClInclude Include="MovieList.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>

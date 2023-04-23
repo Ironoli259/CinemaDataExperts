@@ -5,9 +5,10 @@ class Administrator
 private:
 	std::string userName;
 	std::string password;
+	bool isMainAdmin;
 
 public:
-	Administrator(std::string userName, std::string password);
+	Administrator(std::string userName, std::string password, bool main);
 	~Administrator();
 	void viewSales();
 	void manageEmployees();

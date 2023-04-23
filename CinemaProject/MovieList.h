@@ -4,6 +4,7 @@
 #include <functional>
 #include "AVLTree.h"
 #include "SortProperty.cpp"
+#include "MovieGraph.h"
 
 //Movie Structure
 
@@ -30,6 +31,7 @@ private:
 	AVLTree<Movie> titleTree;
 	AVLTree<Movie> durationTree;
 	AVLTree<Movie> classificationTree;
+	MovieGraph movieGraph;
 
 public:
 	MovieList();
@@ -41,4 +43,8 @@ public:
 	int getLength();
 	void clearList();	
 	Movie* getMovieAtPosition(int position);	
+	Movie* getMovieByTitle(const std::string& title) const;
+	void addMovieRelationship(const std::string& title1, const std::string& title2);
+	vector<Movie*> recommendMovies(const std::string& title, const std::string& genre, const std::string& classification, const std::string& director, const std::string& actor, int maxDepth) const;
+	void displayRecommended(vector<Movie*> movies);
 };

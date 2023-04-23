@@ -14,3 +14,5 @@ CLASSES:
 - MovieList.h & MovieList.cpp - Linked list class. Contains the Movie struct and stores the movies in a linked list. Also has AVL Trees to sort the movies.
 
 - SortProperty.cpp - Contains enum for the sorting choice.
+
+- MovieGraph.h & MovieGraph.h - Graph for the recommendation system
