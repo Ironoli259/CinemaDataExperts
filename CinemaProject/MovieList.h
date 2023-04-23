@@ -8,8 +8,7 @@
 
 using std::vector;
 
-//Movie Structure
-
+// Move the Movie struct definition outside of the MovieList class
 struct Movie {
 	std::string title;
 	int duration; //minutes
@@ -21,13 +20,13 @@ struct Movie {
 	float rating; //out of 10
 	Movie* next;
 
-	Movie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating):
+	Movie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating) :
 		title(title), duration(duration), classification(classification), synopsis(synopsis), genre(genre), director(director), actor(actor), rating(0), next(nullptr) {}
 };
 
 class MovieList
 {
-private:	
+private:
 	Movie* head;
 	int size;
 	AVLTree<Movie> titleTree;

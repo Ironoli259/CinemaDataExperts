@@ -4,8 +4,8 @@
 class CinemaReservation
 {
 private:
-	std::vector<User> userList;
 public:
+	std::vector<User> userList;
 	void Initialize();
 	void MainMenu();
 	void SearchMovieMenu();

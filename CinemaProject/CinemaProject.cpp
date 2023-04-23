@@ -34,6 +34,7 @@ int main()
 		switch (input)
 		{
 		case 1:
+		{
 			cout << "           LOG IN          \n";
 			cout << "---------------------------\n";
 			cout << "Username: ";
@@ -41,18 +42,19 @@ int main()
 			system("cls");
 
 			//Verify if user exists
-			auto it = std::find_if(cinemaReservation.userList.begin(), cinemaReservation.userList.end(), [&](const User& user) {
-				return user.getUserName() == username;
+			auto it = std::find_if(cinemaReservation->userList.begin(), cinemaReservation->userList.end(), [&](const User& user) {
+				return user.getUserName() == userName;
 				});
-			if (it != cinemaReservation.end()) {
+			if (it != cinemaReservation->userList.end()) {
+				
+			}
+			else {
 				cout << "The user already exists\n";
 				system("pause");
 				system("cls");
 			}
-			else {
-
-			}
 			break;
+		}
 		case 2:
 			break;
 		case 3:

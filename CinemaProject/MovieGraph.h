@@ -1,6 +1,8 @@
 #pragma once
-#include "MovieList.h"
 #include <unordered_map>
+#include <string>
+
+struct Movie;
 
 class MovieGraph
 {

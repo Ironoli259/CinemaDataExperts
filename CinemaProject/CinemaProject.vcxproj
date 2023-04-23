@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="Administrator.cpp" />
     <ClCompile Include="ArrayCustom.cpp" />
-    <ClCompile Include="BSTree.cpp" />
     <ClCompile Include="CinemaProject.cpp" />
     <ClCompile Include="CinemaReservation.cpp" />
     <ClCompile Include="HallsList.cpp" />

@@ -1,24 +1,30 @@
-﻿  CinemaReservation.cpp
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(19,229): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(20,223): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(22,287): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(23,285): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(24,247): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(25,295): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(26,261): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(27,260): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(28,309): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(29,232): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(30,246): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(31,252): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(32,214): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(34,326): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(35,263): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(36,266): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(37,303): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(38,213): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(39,292): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(40,196): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(41,246): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\CinemaProject\CinemaReservation.cpp(42,214): warning C4305: 'argument': truncation from 'double' to 'float'
-  CinemaProject.vcxproj -> C:\Users\doom2\OneDrive\Bureau\Advanced Data Structure\CinemaDataExperts-main\x64\Debug\CinemaProject.exe
+﻿  ArrayCustom.cpp
+  CinemaReservation.cpp
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(26,229): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(32,223): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(45,287): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(46,285): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(47,247): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(48,295): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(49,261): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(50,260): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(51,309): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(52,232): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(53,246): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(54,252): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(55,214): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(57,326): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(58,263): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(59,266): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(60,303): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(61,213): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(62,292): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(63,196): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(64,246): warning C4305: 'argument': truncation from 'double' to 'float'
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\CinemaProject\CinemaReservation.cpp(65,214): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+HallsTree.obj : error LNK2019: unresolved external symbol "public: __cdecl BSTree<struct CinemaHall>::BSTree<struct CinemaHall>(void)" (??0?$BSTree@UCinemaHall@@@@QEAA@XZ) referenced in function "public: __cdecl HallsTree::HallsTree(void)" (??0HallsTree@@QEAA@XZ)
+HallsTree.obj : error LNK2019: unresolved external symbol "public: __cdecl BSTree<struct CinemaHall>::~BSTree<struct CinemaHall>(void)" (??1?$BSTree@UCinemaHall@@@@QEAA@XZ) referenced in function "public: __cdecl HallsTree::~HallsTree(void)" (??1HallsTree@@QEAA@XZ)
+HallsTree.obj : error LNK2019: unresolved external symbol "public: void __cdecl BSTree<struct CinemaHall>::Insert(struct CinemaHall const &)" (?Insert@?$BSTree@UCinemaHall@@@@QEAAXAEBUCinemaHall@@@Z) referenced in function "public: void __cdecl HallsTree::AddHall(int,struct Showtime *,struct Showtime *,struct Showtime *,struct Showtime *,struct Showtime *,struct Showtime *)" (?AddHall@HallsTree@@QEAAXHPEAUShowtime@@00000@Z)
+HallsTree.obj : error LNK2019: unresolved external symbol "public: void __cdecl BSTree<struct CinemaHall>::PrintInorder(void)const " (?PrintInorder@?$BSTree@UCinemaHall@@@@QEBAXXZ) referenced in function "public: void __cdecl HallsTree::DisplayHalls(void)" (?DisplayHalls@HallsTree@@QEAAXXZ)
+F:\Developpment\Lasalle\Semester 4\Algorithms\CinemaDataExperts\x64\Debug\CinemaProject.exe : fatal error LNK1120: 4 unresolved externals

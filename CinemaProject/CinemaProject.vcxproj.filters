@@ -36,9 +36,6 @@
     <ClCompile Include="ArrayCustom.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BSTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CinemaReservation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
