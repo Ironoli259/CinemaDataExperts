@@ -6,7 +6,6 @@
 
 struct CinemaHall {
     int number;
-    //other members to implement
     Showtime* showtime1;
     Showtime* showtime2;
     Showtime* showtime3;
@@ -34,5 +33,7 @@ public:
     void ClearTree();
     void DisplayHalls();
     bool PrintHallInfo(const CinemaHall& hall);
+    int GetSize();
+    CinemaHall* GetHall(int number);
 };
 

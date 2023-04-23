@@ -2,7 +2,7 @@
 
 template<typename T>
 class BSTree {
-private:
+public:
     struct Node {
         T value;
         Node* left;
@@ -39,6 +39,20 @@ private:
             return current;
         }
     }
+    Node* FindNode(Node* current, const int index) const {
+        if (current == nullptr) {
+            return nullptr;
+        }
+        else if (index < current->value.number) {
+            return FindNode(current->left, index);
+        }
+        else if (!(index < current->value.number)) {
+            return FindNode(current->right, index);
+        }
+        else {
+            return current;
+        }
+    }
 
     void DeleteTree(Node*& current) {
         if (current != nullptr) {
@@ -60,7 +74,10 @@ public:
     Node* Find(const T& value) const {
         return FindNode(root, value);
     }
-
+    Node* Find(int value) const {
+        return FindNode(root, value);
+    }
+    
     bool Contains(const T& value) const {
         return (FindNode(root, value) != nullptr);
     }

@@ -1,5 +1,5 @@
 #include "HallsTree.h"
-
+#include "BSTree.h"
 using std::cout;
 using std::endl;
 
@@ -26,6 +26,18 @@ std::ostream& operator<<(std::ostream& os, const CinemaHall& hall) {
     os << "Starts at : " << hall.showtime3->startTime << std::endl;
     os << "Ends at   : " << hall.showtime3->endTime << std::endl;
     os << "----------------------------------------------" << std::endl;
+    os << "4th Movie : " << hall.showtime4->movie->title << std::endl;
+    os << "Starts at : " << hall.showtime4->startTime << std::endl;
+    os << "Ends at   : " << hall.showtime4->endTime << std::endl;
+    os << "---------------------------------------------" << std::endl;
+    os << "5th movie : " << hall.showtime5->movie->title << std::endl;
+    os << "Starts at : " << hall.showtime5->startTime << std::endl;
+    os << "Ends at   : " << hall.showtime5->endTime << std::endl;
+    os << "---------------------------------------------" << std::endl;
+    os << "6th movie : " << hall.showtime6->movie->title << std::endl;
+    os << "Starts at : " << hall.showtime6->startTime << std::endl;
+    os << "Ends at   : " << hall.showtime6->endTime << std::endl;
+    os << "----------------------------------------------" << std::endl;
     return os;
 }
 void HallsTree::AddHall(int number, Showtime* show1, Showtime* show2, Showtime* show3, Showtime* show4, Showtime* show5, Showtime* show6){
@@ -51,3 +63,21 @@ bool HallsTree::PrintHallInfo(const CinemaHall& hall) {
     cout << hall;
     return true;
 }
+
+int HallsTree::GetSize()
+{
+    return this->size;
+}
+CinemaHall* HallsTree::GetHall(int number)
+{
+    BSTree<CinemaHall>::Node* node = hallsTree.Find(number);
+    if (node != nullptr) {
+        return &(node->value);
+    }
+    else {
+        return nullptr;
+    }
+}
+
+
+
