@@ -249,9 +249,6 @@ void CinemaReservation::Initialize()
 	showIndex += 6;
 	//Test  hallsList.DisplayHalls();
 	//Test movieList.displayMovies();
-
-	MainMenu();
-	return;
 }
 
 void CinemaReservation::MainMenu()
@@ -286,7 +283,7 @@ void CinemaReservation::MainMenu()
 			selectedMovie = SearchMovieMenu();
 			validated = (selectedMovie != nullptr);
 		}
-		
+
 		else if (userInput == "2")
 		{
 			selectedHall = SearchHallsMenu();
@@ -295,9 +292,7 @@ void CinemaReservation::MainMenu()
 		else if (userInput == "3")
 			//DisplayReservations()
 			;
-		else
-			return; //Go back to login screen
-	} while (!validated);
+	} while (userInput != "0");
 	//Confirm the showtime
 	return;
 }
@@ -342,11 +337,6 @@ void CinemaReservation::ExitApp()
 	cout << "Developed by:\nOlivier Grenier\nAlexis Proulx\nDominic Audet" << endl;
 	system("pause>0");
 	exit(EXIT_SUCCESS);
-}
-
-std::vector<User*> CinemaReservation::GetUserList()
-{
-	return this->userList;
 }
 
 //Set the current user after successful login
@@ -434,4 +424,13 @@ string CinemaReservation::CalculateEndTime(int hours, int minutes, int minsToAdd
 	else mins = std::to_string(minutes);
 	string time = hrs + "h" + mins;
 	return time;
+}
+
+void CinemaReservation::AddTicket(Showtime showtime, int amount)
+{
+	TicketReservation newticketreq = TicketReservation(showtime.cinemaHall, showtime.startTime, amount, this->currentUser->getUserName());
+	this->ticketReservationRequests.push(newticketreq);
+	for (int i = 0; i < amount; i++) {
+		this->currentUser->AddPurchasedTickets(showtime.movie, showtime.startTime, showtime.cinemaHall);
+	}
 }

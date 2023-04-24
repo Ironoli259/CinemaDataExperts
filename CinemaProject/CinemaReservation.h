@@ -8,25 +8,36 @@
 
 struct TicketReservation {
 	int hallNumber;
-	int showTimeIndex;
+	std::string startTime;
 	int numberOfTickets;
+	std::string username;
+
+	TicketReservation(int hall, std::string time, int numberOfTickets, std::string user): hallNumber(hall), startTime(time), numberOfTickets(numberOfTickets), username(user) {}
 };
 
 class CinemaReservation
 {
 private:
-	std::queue<TicketReservation> ticketReservations;
+	std::queue<TicketReservation> ticketReservationRequests;
 	std::vector<User*> userList;
 	User* currentUser;
 public:	
+	CinemaReservation() : currentUser(nullptr){}
+	~CinemaReservation() {
+		for (auto user : userList) {
+			delete user;
+		}
+	}
+
 	void Initialize();
 	void MainMenu();
 	Movie* SearchMovieMenu();
 	CinemaHall* SearchHallsMenu();
 	void ExitApp();
-	std::vector<User*> GetUserList();
+	std::vector<User*>& GetUserList() { return userList; }
 	void SetCurrentUser(User* user);
 	void AddUser(std::string userName);
 	std::string CalculateEndTime(int hours, int minutes, int minsToAdd);
+	void AddTicket(Showtime showtime, int amount);
 };
 

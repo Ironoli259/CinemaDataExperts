@@ -28,9 +28,11 @@ int main()
 	Administrator admin = Administrator("ADMIN");
 	CinemaReservation* cinemaReservation = new CinemaReservation();
 	cinemaReservation->Initialize();
+
 	do {
-		input = mainMenu();
-		auto it = cinemaReservation->GetUserList().end();
+		std::vector<User*>& userList = cinemaReservation->GetUserList();
+		input = mainMenu();		
+		auto it = userList.end();
 		
 		switch (input)
 		{
@@ -43,10 +45,10 @@ int main()
 			system("cls");
 
 			//Verify if user exists
-			it = std::find_if(cinemaReservation->GetUserList().begin(), cinemaReservation->GetUserList().end(), [&](const User* user) {
+			it = std::find_if(userList.begin(), userList.end(), [&](const User* user) {
 				return user->getUserName() == userName;
 				});
-			if (it != cinemaReservation->GetUserList().end()) {
+			if (it != userList.end()) {
 				cinemaReservation->SetCurrentUser(*it);
 				cinemaReservation->MainMenu();
 			}
@@ -69,23 +71,23 @@ int main()
 				cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			}
 			//Verify if user exists
-			it = std::find_if(cinemaReservation->GetUserList().begin(), cinemaReservation->GetUserList().end(), [&](const User* user) {
+			it = std::find_if(userList.begin(), userList.end(), [&](const User* user) {
 				return user->getUserName() == userName;
 				});
-			if (it != cinemaReservation->GetUserList().end()) {
+			if (it != userList.end()) {
 				cout << "The username already exists.\n";
 				system("pause");
 				system("cls");
 			}
 			else {
-				cinemaReservation->AddUser(userName);				
+				cinemaReservation->AddUser(userName);		
 			}
 			break;
 		case 3:
 			break;
 		default:
 			cinemaReservation->ExitApp();
-		}
+		}		
 	} while (input != 4);
 
 	delete cinemaReservation;
