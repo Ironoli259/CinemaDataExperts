@@ -1,6 +1,11 @@
 # CinemaDataExperts
 Cinema project for the Data Structures class
 
+Please make sure you create a user first!
+
+Admin not implemented yet :(
+
+
 CLASSES:
 
 - CinemaProject.cpp - Holds the main() of the program.
@@ -16,3 +21,7 @@ CLASSES:
 - SortProperty.cpp - Contains enum for the sorting choice.
 
 - MovieGraph.h & MovieGraph.h - Graph for the recommendation system
+
+- BSTree.h - Tree to store the halls according to their number
+
+- ArrayCustom.h & .cpp  - Custom class of array to store the showtimes
