@@ -5,6 +5,7 @@
 #include "AVLTree.h"
 #include "SortProperty.cpp"
 #include "MovieGraph.h"
+#include "ShowtimeList.h"
 
 using std::vector;
 
@@ -19,9 +20,11 @@ struct Movie {
 	std::string actor;
 	float rating; //out of 10
 	Movie* next;
-
+	//Showtime* show1;
+	//Showtime* show2;
+	//Showtime* show3;
 	Movie(const std::string& title, int duration, const std::string& classification, const std::string& synopsis, const std::string& genre, const std::string& director, const std::string& actor, float rating) :
-		title(title), duration(duration), classification(classification), synopsis(synopsis), genre(genre), director(director), actor(actor), rating(0), next(nullptr) {}
+		title(title), duration(duration), classification(classification), synopsis(synopsis), genre(genre), director(director), actor(actor), rating(0), next(nullptr){}
 };
 
 class MovieList

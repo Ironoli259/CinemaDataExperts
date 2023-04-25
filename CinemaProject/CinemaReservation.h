@@ -32,12 +32,15 @@ public:
 	void Initialize();
 	void MainMenu();
 	Movie* SearchMovieMenu();
-	CinemaHall* SearchHallsMenu();
+	Showtime* ChooseShowtime(std::string movieTitle);
+	Showtime* ChooseShowtime(int hallNumber);
+	int SearchHallsMenu();
 	void ExitApp();
 	std::vector<User*>& GetUserList() { return userList; }
 	void SetCurrentUser(User* user);
 	void AddUser(std::string userName);
 	std::string CalculateEndTime(int hours, int minutes, int minsToAdd);
-	void AddTicket(Showtime showtime, int amount);
+	int ReserveTickets(Showtime* showtime);
+	void AddTicket(Showtime* showtime, int amount);
 };
 

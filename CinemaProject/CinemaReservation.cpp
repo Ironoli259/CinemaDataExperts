@@ -28,7 +28,7 @@ void CinemaReservation::Initialize()
 	int hallsIndex{ 1 };
 	int showIndex{ 0 };
 	int movieIndex{ nbrMovies - 1 };
-	int duration;
+	int duration{ 0 };
 
 	movieList.addMovie("The Shawshank Redemption", 142, "R", "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", "Drama", "Frank Darabont", "Tim Robbins", 9.3f);
 	movieList.addMovie("The Godfather", 175, "R", "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.", "Crime", "Francis Ford Coppola", "Marlon Brando", 9.2f);
@@ -249,6 +249,7 @@ void CinemaReservation::Initialize()
 	showIndex += 6;
 	//Test  hallsList.DisplayHalls();
 	//Test movieList.displayMovies();
+
 }
 
 void CinemaReservation::MainMenu()
@@ -257,17 +258,24 @@ void CinemaReservation::MainMenu()
 	std::regex rangeRegex("^[0-3]$"); // regex to match range from 0 to 3
 	bool validated;
 	Movie* selectedMovie{ nullptr };
-	CinemaHall* selectedHall{ nullptr };
+	int selectedHall{ 0 };
+	Showtime* selectedShow{ nullptr };
+	int nbrTickets{ 0 };
 	// ask user for input and validate with regex
 	do {
 
 		do {
+			validated = false;
 			system("cls");
+			cout << "Logged as " << currentUser->getUserName() << endl;
+			cout << "----------------------------------------------" << endl;
 			cout << "CINEMA RESERVATION" << endl;
+			cout << "----------------------------------------------" << endl;
 			cout << "1- Search movies" << endl;
 			cout << "2- Search cinema halls" << endl;
 			cout << "3- Check my reservations" << endl;
 			cout << "0- Log out" << endl;
+			cout << "----------------------------------------------" << endl;
 			cin >> userInput;
 			validated = std::regex_match(userInput, rangeRegex);
 			if (!validated)
@@ -277,23 +285,50 @@ void CinemaReservation::MainMenu()
 			}
 			system("cls");
 		} while (!validated);
-
+		if (userInput == "0")
+			return;
 		if (userInput == "1")
 		{
 			selectedMovie = SearchMovieMenu();
 			validated = (selectedMovie != nullptr);
+			if (validated)
+				selectedShow = ChooseShowtime(selectedMovie->title);
+			else continue;
 		}
-
 		else if (userInput == "2")
 		{
 			selectedHall = SearchHallsMenu();
-			validated = (selectedHall != nullptr);
+			validated = (selectedHall != 0);
+			if (validated)
+				selectedShow = ChooseShowtime(selectedHall);
+			else continue;
 		}
 		else if (userInput == "3")
-			//DisplayReservations()
-			;
+		{
+			//DisplayReservations
+			system("cls");
+			this->currentUser->DisplayTickets();
+			system("pause");
+			continue;
+		}
+		validated = (selectedShow != nullptr);
+		if (validated)
+			nbrTickets = ReserveTickets(selectedShow);
+		else continue;
+		validated = (nbrTickets > 0);
+		if (validated)
+		{
+			AddTicket(selectedShow, nbrTickets);
+			system("cls");
+			cout << "You reserved " << nbrTickets << " ticket(s) for the movie:" << endl;
+			cout << selectedShow->movie->title << endl;
+			cout << "on " << selectedShow->startTime << endl;
+			cout << "----------------------------------------------" << endl;
+			cout << "Thank you for your purchase!!" << endl;
+			system("pause>0");
+		}
+		else continue;
 	} while (userInput != "0");
-	//Confirm the showtime
 	return;
 }
 
@@ -303,38 +338,124 @@ Movie* CinemaReservation::SearchMovieMenu()
 	int input;
 
 	do {
-		cout << "-Please choose a movie you wish to reserve tickets for-" << endl;
+		system("cls");
 		for (int i = 1; i < size + 1; i++)
 			cout << i << "- " << movieList.getMovieAtPosition(size - i)->title << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "0- Return to previous menu" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "-Please choose a movie you wish to reserve tickets for-" << endl;
 		cin >> input;
-		system("cls");
 	} while (cin.fail() || input < 0 || input > size);
 	if (input == 0)
 		return nullptr;
 	return movieList.getMovieAtPosition(size - input);
 }
-CinemaHall* CinemaReservation::SearchHallsMenu()
+int CinemaReservation::SearchHallsMenu()
 {
 	int size = hallsList.GetSize();
 	int input;
 
 	do {
+		system("cls");
 		hallsList.DisplayHalls();
 		cout << "-Please choose a Hall you wish to reserve tickets for-" << endl;
+		cout << "----------------------------------------------" << endl;
 		cout << "0- Return to previous menu" << endl;
 		cin >> input;
-		system("cls");
 	} while (cin.fail() || input < 0 || input > size);
+	return input;
+}
+Showtime* CinemaReservation::ChooseShowtime(string movieTitle)
+{
+	Showtime* show1{ nullptr };
+	Showtime* show2{ nullptr };
+	Showtime* show3{ nullptr };
+	Showtime* selectedShow{ nullptr };
+	int index{ 0 };
+	for (int i = 0; i < showList.getSize(); i++)
+	{
+		if (showList.getShowtimeAt(i).movie->title == movieTitle)
+		{
+			if (index == 0)
+			{
+				show1 = &showList.getShowtimeAt(i);
+				index++;
+			}
+			else if (index == 1)
+			{
+				show2 = &showList.getShowtimeAt(i);
+				index++;
+			}
+			else if (index == 2)
+				show3 = &showList.getShowtimeAt(i);
+		}
+	}
+	if (show1 == nullptr)
+		return nullptr;
+	int input;
+	do {
+		system("cls");
+		cout << "Please choose a showtime to reserve tickets" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "Selected movie: " << movieTitle << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "1- " << show1->startTime << endl;
+		cout << "2- " << show2->startTime << endl;
+		cout << "3- " << show3->startTime << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "0- " << "Return to previous menu" << endl;
+		cin >> input;
+	} while (cin.fail() || input < 0 || input > 3);
 	if (input == 0)
 		return nullptr;
-	return hallsList.GetHall(input);
+	if (input == 1)
+		selectedShow = show1;
+	else if (input == 2)
+		selectedShow = show2;
+	else if (input == 3)
+		selectedShow == show3;
+	return selectedShow;
+}
+Showtime* CinemaReservation::ChooseShowtime(int hallNumber) {
+	CinemaHall* chosenHall = hallsList.GetHall(hallNumber);
+	int input;
+	do {
+		system("cls");
+		cout << "Please choose a showtime to reserve tickets" << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "Movie: " << chosenHall->showtime1->movie->title << endl;
+		cout << "1- " << chosenHall->showtime1->startTime << endl;
+		cout << "2- " << chosenHall->showtime2->startTime << endl;
+		cout << "3- " << chosenHall->showtime3->startTime << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "Movie: " << chosenHall->showtime4->movie->title << endl;
+		cout << "4- " << chosenHall->showtime4->startTime << endl;
+		cout << "5- " << chosenHall->showtime5->startTime << endl;
+		cout << "6- " << chosenHall->showtime6->startTime << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "0- " << "Return to previous menu" << endl;
+		cin >> input;
+	} while (cin.fail() || input < 0 || input > 6);
+	if (input == 1)
+		return chosenHall->showtime1;
+	if (input == 2)
+		return chosenHall->showtime2;
+	if (input == 3)
+		return chosenHall->showtime3;
+	if (input == 4)
+		return chosenHall->showtime4;
+	if (input == 5)
+		return chosenHall->showtime5;
+	if (input == 6)
+		return chosenHall->showtime6;
+	return nullptr;
 }
 void CinemaReservation::ExitApp()
 {
 	system("cls");
 	cout << "THANK YOU FOR USING OUR CINEMA TICKET APP!!" << endl;
-	cout << "Developed by:\nOlivier Grenier\nAlexis Proulx\nDominic Audet" << endl;
+	cout << "Developed by:\nOlivier Grenier\nDominic Audet" << endl;
 	system("pause>0");
 	exit(EXIT_SUCCESS);
 }
@@ -425,12 +546,28 @@ string CinemaReservation::CalculateEndTime(int hours, int minutes, int minsToAdd
 	string time = hrs + "h" + mins;
 	return time;
 }
-
-void CinemaReservation::AddTicket(Showtime showtime, int amount)
+int CinemaReservation::ReserveTickets(Showtime* showtime)
 {
-	TicketReservation newticketreq = TicketReservation(showtime.cinemaHall, showtime.startTime, amount, this->currentUser->getUserName());
+	int maxAmount = showtime->seatingCapacity - showtime->currentSeats;
+	int input;
+	do {
+		system("cls");
+		cout << "Movie: " << showtime->movie->title << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "Starts " << showtime->startTime << endl;
+		cout << "Ends at                    " << showtime->endTime << endl;
+		cout << "----------------------------------------------" << endl;
+		cout << "How many tickets do you want to reserve? (seats available: " << maxAmount << ")" << endl;
+		cin >> input;
+	} while (cin.fail() || input > maxAmount);
+	return input;
+}
+void CinemaReservation::AddTicket(Showtime* showtime, int amount)
+{
+	TicketReservation newticketreq = TicketReservation(showtime->cinemaHall, showtime->startTime, amount, this->currentUser->getUserName());
 	this->ticketReservationRequests.push(newticketreq);
 	for (int i = 0; i < amount; i++) {
-		this->currentUser->AddPurchasedTickets(showtime.movie, showtime.startTime, showtime.cinemaHall);
+		this->currentUser->AddPurchasedTickets(showtime->movie, showtime->startTime, showtime->cinemaHall);
+		showtime->currentSeats++;
 	}
 }

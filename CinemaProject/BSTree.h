@@ -39,21 +39,20 @@ public:
             return current;
         }
     }
-    Node* FindNode(Node* current, const int index) const {
+    Node* FindNode(Node* current, const int number) const {
         if (current == nullptr) {
             return nullptr;
         }
-        else if (index < current->value.number) {
-            return FindNode(current->left, index);
+        else if (number < current->value.number) {
+            return FindNode(current->left, number);
         }
-        else if (!(index < current->value.number)) {
-            return FindNode(current->right, index);
+        else if (number > current->value.number) {
+            return FindNode(current->right, number);
         }
         else {
             return current;
         }
     }
-
     void DeleteTree(Node*& current) {
         if (current != nullptr) {
             DeleteTree(current->left);
