@@ -18,6 +18,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::string;
+using std::getline;
 
 MovieList movieList;
 HallsTree hallsList;
@@ -29,6 +30,12 @@ void CinemaReservation::Initialize()
 	int showIndex{ 0 };
 	int movieIndex{ nbrMovies - 1 };
 	int duration{ 0 };
+
+	User* olivier = new User("Oli", "Olivier", "Grenier", "M");
+	olivier->preferredGenre = "Adventure";
+	olivier->preferredDirector = "Peter Jackson";
+	olivier->preferredActor = "Leonardo DiCaprio";
+	this->userList.push_back(olivier);
 
 	movieList.addMovie("The Shawshank Redemption", 142, "R", "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", "Drama", "Frank Darabont", "Tim Robbins", 9.3f);
 	movieList.addMovie("The Godfather", 175, "R", "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.", "Crime", "Francis Ford Coppola", "Marlon Brando", 9.2f);
@@ -255,7 +262,7 @@ void CinemaReservation::Initialize()
 void CinemaReservation::MainMenu()
 {
 	string userInput;
-	std::regex rangeRegex("^[0-3]$"); // regex to match range from 0 to 3
+	std::regex rangeRegex("^[0-4]$"); // regex to match range from 0 to 3
 	bool validated;
 	Movie* selectedMovie{ nullptr };
 	int selectedHall{ 0 };
@@ -271,9 +278,10 @@ void CinemaReservation::MainMenu()
 			cout << "----------------------------------------------" << endl;
 			cout << "CINEMA RESERVATION" << endl;
 			cout << "----------------------------------------------" << endl;
-			cout << "1- Search movies" << endl;
-			cout << "2- Search cinema halls" << endl;
-			cout << "3- Check my reservations" << endl;
+			cout << "1- See movies" << endl;
+			cout << "2- Reserve movies" << endl;
+			cout << "3- Search cinema halls" << endl;
+			cout << "4- Check my reservations" << endl;
 			cout << "0- Log out" << endl;
 			cout << "----------------------------------------------" << endl;
 			cin >> userInput;
@@ -287,7 +295,49 @@ void CinemaReservation::MainMenu()
 		} while (!validated);
 		if (userInput == "0")
 			return;
-		if (userInput == "1")
+		else if (userInput == "1") {	//Sorted movies
+			/*
+			* RECOMMENDED FEATURE --- BROKEN
+			Movie* sourceMovie = movieList.getMovieAtPosition(0);
+			std::vector<Movie*> recommendedMovies;
+			if (currentUser->getAgeClassification() != "M")
+				recommendedMovies = movieList.recommendMovies(sourceMovie->title, currentUser->preferredGenre, currentUser->getAgeClassification(), currentUser->preferredDirector, currentUser->preferredActor, 4);
+			else
+				recommendedMovies = movieList.recommendMoviesByAge(sourceMovie->title,currentUser->getAgeClassification(),4);
+			movieList.displayRecommended(recommendedMovies);
+			system("pause");		}
+			*/
+			int input = 0;
+			movieList.displayMovies();
+			do {
+				do {
+					cout << "0- Back" << endl;
+					cout << "1- Sort by title" << endl;
+					cout << "2- Sort by duration" << endl;
+					cout << "3- Sort by classification" << endl;
+					cout << "4- Sort by recommended" << endl;
+					cin >> input;
+				} while (cin.fail() || input < 0 || input > 4);
+				system("cls");
+				switch (input)
+				{
+				case 1 :
+					movieList.displayMoviesSortedBy(SortProperty::Title);
+					break;
+				case 2:
+					movieList.displayMoviesSortedBy(SortProperty::Duration);
+					break;
+				case 3:
+					movieList.displayMoviesSortedBy(SortProperty::Classification);
+					break;
+				case 4:
+					//Bugged currently
+				default:
+					break;
+				}
+			} while (input != 0);
+		}
+		else if (userInput == "2")
 		{
 			selectedMovie = SearchMovieMenu();
 			validated = (selectedMovie != nullptr);
@@ -295,7 +345,7 @@ void CinemaReservation::MainMenu()
 				selectedShow = ChooseShowtime(selectedMovie->title);
 			else continue;
 		}
-		else if (userInput == "2")
+		else if (userInput == "3")
 		{
 			selectedHall = SearchHallsMenu();
 			validated = (selectedHall != 0);
@@ -303,7 +353,7 @@ void CinemaReservation::MainMenu()
 				selectedShow = ChooseShowtime(selectedHall);
 			else continue;
 		}
-		else if (userInput == "3")
+		else if (userInput == "4")
 		{
 			//DisplayReservations
 			system("cls");

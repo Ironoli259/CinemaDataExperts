@@ -6,6 +6,7 @@
 #include "SortProperty.cpp"
 #include "MovieGraph.h"
 #include "ShowtimeList.h"
+#include "User.h"
 
 using std::vector;
 

@@ -178,6 +178,9 @@ vector<Movie*> MovieList::recommendMovies(const std::string& title, const string
 	Movie* sourceMovie = getMovieByTitle(title);
 
 	if (sourceMovie) {
+		for (const auto& movie : movieGraph.recommendMovies(sourceMovie, genre, classification, director, actor, maxDepth)) {
+			cout << "-> " + movie->title << endl;
+		}
 		return movieGraph.recommendMovies(sourceMovie, genre, classification, director, actor, maxDepth);
 	}
 	else {

@@ -2,6 +2,7 @@
 #include "MovieGraph.h"
 #include <queue>
 #include <unordered_set>
+#include <iostream>
 
 void MovieGraph::addMovie(const Movie* movie) {
 	adjacencyList[movie] = std::vector<const Movie*>{};
@@ -38,7 +39,7 @@ float MovieGraph::calculateSimilarity(const Movie* movie, const std::string& gen
 std::vector<Movie*> MovieGraph::recommendMovies(const Movie* source, const std::string& genre, const std::string& classification, const std::string& director, const std::string& actor, int maxDepth) const {
 	std::vector<Movie*> recommendedMovies;
 	std::queue<std::pair<const Movie*, int>> bfsQueue;	//Breadth-First Search. Graph searching algorithm. Indian tutorials are the best!
-	std::unordered_set<const Movie*> visited;
+	std::unordered_set<const Movie*> visited, scored;
 
 	bfsQueue.push(std::make_pair(source,0 ));
 	visited.insert(source);
@@ -56,7 +57,7 @@ std::vector<Movie*> MovieGraph::recommendMovies(const Movie* source, const std::
 
 		//Enque unvisited neighbors of currentMovie into bfsQueue
 		for (const auto& neighbor : adjacencyList.at(currentMovie)) {
-			if (visited.find(neighbor) == visited.end()) {
+			if (visited.find(neighbor) == visited.cend()) {
 				bfsQueue.push(std::make_pair(neighbor, depth + 1));
 				visited.insert(neighbor);
 			}
@@ -66,9 +67,11 @@ std::vector<Movie*> MovieGraph::recommendMovies(const Movie* source, const std::
 	// Calculate similarity scores for each movie and store them in a vector of pairs
 	std::vector<std::pair<const Movie*, float>> scoredMovies;
 	for (const auto& movie : visited) {
-		if (movie != source) {
+		if (movie != source && scored.find(movie) == scored.end()) {
 			float similarityScore = calculateSimilarity(movie, genre, classification, director, actor);
+			std::cout << "Movie: " << movie->title << " | Score: " << similarityScore << std::endl;
 			scoredMovies.emplace_back(movie, similarityScore);
+			scored.insert(movie);
 		}
 	}
 
@@ -77,8 +80,14 @@ std::vector<Movie*> MovieGraph::recommendMovies(const Movie* source, const std::
 		return a.second > b.second;
 		});
 
+	std::cout << "Sorted movies based on similarity scores: " << std::endl;
+	for (const auto& scoredMovie : scoredMovies) {
+		std::cout << "Movie: " << scoredMovie.first->title << " | Score: " << scoredMovie.second << std::endl;
+	}
+
 	//Convert the sorted scoredMovies vector to a vector of Movie pointers	
 	for (const auto& scoredMovie : scoredMovies) {
+		std::cout << scoredMovie.first;
 		recommendedMovies.push_back(const_cast<Movie*>(scoredMovie.first));
 	}
 
